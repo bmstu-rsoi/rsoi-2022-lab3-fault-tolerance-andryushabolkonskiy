@@ -36,6 +36,7 @@ def GWS_hello_world():
 
 
 @app.route('/api/v1/flights', methods=['GET'])
+@circuit_breaker(max_retries=5, service_name='Flight')
 def GWS_get_flights():
     headers = {'Content-type': 'application/json'}
     param = dict(request.args)
@@ -232,7 +233,7 @@ def GWS_ticket_refund(ticketUid):
             routing_key='task_queue',
             body=cmd.encode(),
             properties=pika.BasicProperties(
-                delivery_mode=2,  
+                delivery_mode=2,
             ))
         connection.close()
     else:
