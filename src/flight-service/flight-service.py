@@ -34,6 +34,11 @@ def FS_get_flight_exist():
     return result
 
 
+@app.route('/manage/health', methods=['GET'])
+def FS_manage_health():
+    return Response(status=200)
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8060))
     app.run(debug=True, port=port, host="0.0.0.0")
