@@ -8,19 +8,19 @@
 		},
 		{
 			"key": "flightNumber",
-			"value": ""
+			"value": "AFL031"
 		},
 		{
 			"key": "ticketUid",
-			"value": ""
+			"value": "049161bb-badd-4fa8-9d90-87c9a82b0668"
 		},
 		{
 			"key": "username",
-			"value": ""
+			"value": "me"
 		},
 		{
 			"key": "balance",
-			"value": ""
+			"value": "1500"
 		}
 	]
 }
