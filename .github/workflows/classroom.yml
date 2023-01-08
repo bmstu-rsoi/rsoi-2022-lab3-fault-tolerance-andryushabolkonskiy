@@ -29,8 +29,9 @@ jobs:
         env:
           WAIT_PORTS: 8080,8070,8060,8050
 
-      - name: Let's wait
-        run: sleep 30
+      - name: Sleep for 25 seconds
+        run: sleep 25s
+        shell: bash
 
       - name: Run API Tests
         timeout-minutes: 5
