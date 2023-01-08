@@ -13,8 +13,7 @@ services:
       - ./postgres/:/docker-entrypoint-initdb.d/
     ports:
       - "5432:5432"
-
- networks:
+    networks:
       default:
         ipv4_address: 10.5.0.2
 
@@ -58,7 +57,7 @@ services:
       default:
         ipv4_address: 10.5.0.6
 
-   rabbitmq:
+  rabbitmq:
     image: rabbitmq:3
     container_name: rabbitmq-cont
     ports:
@@ -68,9 +67,9 @@ services:
       default:
         ipv4_address: 10.5.0.7
 
-  rabbit:
+  worker:
     build: src/rabbitmq/
-    container_name: rabbit-cont
+    container_name: worker-cont
     restart: on-failure
     networks:
       default:

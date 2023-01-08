@@ -4,7 +4,7 @@ import json
 import requests
 
 
-def rabbit_ticket_refund(headers, api):
+def worker_ticket_refund(headers, api):
     status_code = 500
     while status_code != 204:
         try:
@@ -19,7 +19,7 @@ def callback(ch, method, properties, body):
     cmd = json.loads(body.decode())
 
     if cmd['status'] == 'ticket_refund':
-        rabbit_ticket_refund(cmd['headers'], cmd['api'])
+        worker_ticket_refund(cmd['headers'], cmd['api'])
     else:
         print("sorry i did not understand ", body)
 
