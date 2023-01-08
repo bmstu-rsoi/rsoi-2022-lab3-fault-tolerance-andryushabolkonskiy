@@ -48,7 +48,9 @@ def GWS_get_flights():
 
 
 @app.route('/api/v1/privilege', methods=['GET'])
+@circuit_breaker(max_retries=5, service_name='Bonus')
 def GWS_get_privilege():
+
     response = requests.get(baseUrlBonus + '/api/v1/privilege', headers=request.headers)
 
     if response.status_code == 200:
@@ -72,6 +74,7 @@ def GWS_get_me_info():
     else:
         del result['privilege']['history']
     return result
+
 
 @circuit_breaker(max_retries=5, service_name='Ticket')
 def get_info_tickets(api, headers):
