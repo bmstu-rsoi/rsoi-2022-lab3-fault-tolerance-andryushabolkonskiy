@@ -129,6 +129,22 @@ class TicketsDataBase:
 
         return result
 
+    def db_ticket_rollback(self, ticket_uid):
+        # Checking the existence of a ticket
+        query = f"SELECT EXISTS(SELECT * FROM ticket WHERE ticket_uid = '{ticket_uid}');"
+        self.cursor.execute(query)
+        result = self.cursor.fetchone()[0]
+
+        # Exiting the function with the value False
+        if not result:
+            return result
+
+        # Rollback ticket
+        query = f"DELETE FROM ticket WHERE ticket_uid = '{ticket_uid}'"
+        self.cursor.execute(query)
+
+        return result
+
     def db_disconnect(self):
         self.cursor.close()
         self.connection.close()

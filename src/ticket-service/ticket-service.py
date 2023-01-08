@@ -49,6 +49,21 @@ def TS_ticket_refund(ticketUid):
     return Response(status=204)
 
 
+@app.route('/api/v1/tickets/rollback/<string:ticketUid>', methods=['DELETE'])
+def TS_ticket_rollback(ticketUid):
+    instance = TicketsDataBase()
+    result = instance.db_ticket_rollback(ticketUid)
+    instance.db_disconnect()
+    if not result:
+        return Response(status=404)
+    return Response(status=204)
+
+
+@app.route('/manage/health', methods=['GET'])
+def TS_manage_health():
+    return Response(status=200)
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8070))
     app.run(debug=True, port=port, host="0.0.0.0")
