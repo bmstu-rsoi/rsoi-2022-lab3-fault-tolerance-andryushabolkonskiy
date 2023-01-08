@@ -19,7 +19,6 @@ def BS_get_privilege():
     instance.db_disconnect()
     if result is None:
         return Response(status=404)
-
     return result
 
 
@@ -47,8 +46,12 @@ def BS_refund_of_bonuses(ticketUid):
     username = request.headers['X-User-Name']
     instance.db_refund_of_bonuses(ticketUid, username)
     instance.db_disconnect()
-
     return Response(status=204)
+
+
+@app.route('/manage/health', methods=['GET'])
+def BS_manage_health():
+    return Response(status=200)
 
 
 if __name__ == "__main__":

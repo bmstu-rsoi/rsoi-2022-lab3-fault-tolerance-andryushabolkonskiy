@@ -49,9 +49,8 @@ class PrivilegesDataBase:
                                 );'''
         self.cursor.execute(create_table_query)
 
-        # Add the first test record ('Test Max', 'GOLD', '1500')
         insert_query = "INSERT INTO privilege (username, status, balance) VALUES (%s,%s,%s);"
-        insert_data = ('Test Max', 'GOLD', 1500)
+        insert_data = ('lolo pepe', 'GOLD', 1500)
         self.cursor.execute(insert_query, insert_data)
 
         return
@@ -71,8 +70,7 @@ class PrivilegesDataBase:
                                 );'''
         self.cursor.execute(create_table_query)
 
-        # Add the first test record
-        # (1, '049161bb-badd-4fa8-9d90-87c9a82b0668', '2021-10-08T19:59:19Z', 1500, 'FILL_IN_BALANCE')
+    
         insert_query = 'INSERT INTO privilege_history ' \
                        '(privilege_id, ticket_uid, datetime, balance_diff, operation_type) ' \
                        'VALUES (%s,%s,%s,%s,%s);'
